@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fabish</title>
+    <link rel="stylesheet"  href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- icon  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="shortcut icon" href="./image/Fabish_Logo_Final_a68866dc-7573-4072-bd3f-3e356eca427e.svg" type="">
+
+</head>
+<body>
+    <!-- loader Animation -->
+    <div class="preloader">
+        <img src="./image/Fabish_Loader-output_534f0495-8160-4416-87a0-e39414a547d0.png" alt="Loading Image">
+    </div>
+    <!-- start header -->
+     <header>
+        <!-- start nav -->
+        <nav class="navbar">
+            <!-- logo -->
+            <div class="navbar-brand">
+            <img src="./image/Fabish_Logo_Final_a68866dc-7573-4072-bd3f-3e356eca427e.svg" alt="logo-img" class="logo">
+            </div>
+
+            <!-- link -->
+
+            <div class="link">
+                <ul class="navbar-link">
+                    <li class="nav-item"><a href="#">Home</a></li>
+                    <li class="nav-item"><a href="#">Catalog</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">SkinCare</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Cleansers</a></li>
+                            <li><a class="dropdown-item" href="#">Moisturizers</a></li>
+                            <li><a class="dropdown-item" href="#">Serums</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a id="cart-icon">
+                            <i  class="fas fa-shopping-cart"></i> 
+                            <span class="cart-count">0</span> 
+                        </a>
+                    </li>
+                    <li id="user-info" style="display: none;">
+                        <span id="username"></span>
+                        <button id="logout-btn">Logout</button>
+                    </li>
+                    <li id="login">
+                        <a href="login.html">Login</a>
+                    </li>
+                </ul>
+                
+            </div>
+        </nav>
+         <!-- end nav -->
+     </header>
+     <!-- end header -->
+
+  
+<!-- cart -->
+ <div class="cart">
+    <h2 class="cart-title">Your Cart</h2>
+    <div class="cart-content">
+        <!-- <div class="cart-box">
+            <img src="./image/2.jpg" alt="Azalea Fields Soothing Cream" class="cart-img">
+            <div class="cart-detail">
+                <h2 class="cart-product-title">Azalea Fields Soothing Cream</h2>
+                <span class="cart-price">$100</span>
+                <div class="cart-quantity">
+                    <button id="decrement">-</button>
+                    <span class="number">1</span>
+                    <button id="increment">+</button>
+                </div>
+            </div>
+<svg class="cart-remove" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#434343"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
+        </div> -->
+    </div>
+<div class="total">
+    <div class="total-title">total</div>
+    <div class="total-price">$0</div>
+</div>
+<button class="btn-buy">Buy Now</button>
+<svg id="cart-close" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#434343"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+
+ </div>
+
+    <!-- Slider Section -->
+    <section class="slider">
+        <div class="slider-container">
+            <!-- Slide 1 -->
+            <div class="slide active">
+                <div class="slide-content">
+                    <h5>HEALTHY SKIN</h5>
+                    <h1>Organic Anti-Aging Cosmetic Cream</h1>
+                    <p>Praesent in nunc vel urna consequat mattis </p>
+                    <a class="button button--primary" href="#">View All</a>
+                </div>
+                <img src="./image/s4.jpg" alt="Slide 1">
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="slide">
+                <div class="slide-content">
+                    <h5>Moisturizer</h5>
+                    <h1>100% Organic Wrinkle Removing Creams</h1>
+                    <p>Ut aliquam amet venenatis urna purus sit amet .</p>
+                    <a class="button button--primary" href="#">View All</a>
+                </div>
+                <img src="./image/s5.avif" alt="Slide 2">
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="slide">
+                <div class="slide-content">
+                    <h5>Up To 50% Off</h5>
+                    <h1>Organic Anti-Aging Cosmetic Cream</h1>
+                    <p>Seek Out Natural Cosmetics Products</p>
+                    <a class="button button--primary" href="#">View All</a>
+                </div>
+                <img src="./image/s6.jpg" alt="Slide 3">
+            </div>
+        </div>
+
+        <!-- Slider Controls -->
+        <button class="prev" aria-label="Previous Slide">&#10094;</button>
+        <button class="next" aria-label="Next Slide">&#10095;</button>
+    </section>
+    <!-- End Slider Section -->
+
+    <!-- start section data  -->
+
+    <section class="text-img">
+        <div class="img-text">
+            <img src="./image/Group.svg" alt="Natural Ingredients">
+            <h3>Natural Ingredients</h3>
+            <p>Praesent in nunc vel urna consequat mattis eget vel libero. Phasellus entesque</p>
+        </div>
+    
+        <div class="img-text">
+            <img src="./image/Group-1.svg" alt="Fragrance Free">
+            <h3>Fragrance Free</h3>
+            <p>Ahasellus entesque praesent in nunc vel urna consequat mattis eget vel libero.</p>
+        </div>
+    
+        <div class="img-text">
+            <img src="./image/Group-2.svg" alt="Allergy Tested">
+            <h3>Allergy Tested</h3>
+            <p>Nunc vel urna consequat praesent in mattis eget vel libero zhasellus entesque</p>
+        </div>
+    
+        <div class="img-text">
+            <img src="./image/Group-3.svg" alt="Paraben Free">
+            <h3>Paraben Free</h3>
+            <p>Mattis eget vel libero praesent in nunc vel urna consequat ehasellus entesque</p>
+        </div>
+    </section>
+
+    <!-- end section data  -->
+  <!-- about start  -->
+  <!-- <section class="about" id="about">
+    <div class="img-about">
+        <img src="./image/Mslider3.jpg" alt="Skin Care Product">
+    </div>
+    <div class="content-about">
+        <h1 class="about_text">About Skin Care</h1>
+        <p>
+            Our skin care products are crafted with the finest natural ingredients to nourish and rejuvenate your skin. 
+            Whether you're looking for hydration, anti-aging, or acne solutions, we have the perfect product for you. 
+            Experience the luxury of healthy, glowing skin with our scientifically advanced formulations.
+        </p>
+        <div class="btn">
+            <a href="#">Discover More</a>
+        </div>
+    </div>
+</section> -->
+ <!-- about end  -->
+<!-- start section Products  -->
+<div class="container">
+    <h1>Beauty Care Products</h1>
+
+        <div class="categories">
+            <ul>
+                <li class="active" data-filter="all">All</li>
+                <li data-filter="body-care">Body Care</li>
+                <li data-filter="hair-care">Hair Care</li>
+                <li data-filter="skin-care">Skin Care</li>
+            </ul>
+
+          </div>
+    
+    
+    <div class="products">
+        <div class="product body-care product-box"  data-name="p-1">
+            <img src="./image/2.jpg" alt="Azalea Fields Soothing Cream">
+            <h3 class="product-title">Azalea Fields Soothing Cream</h3>
+            <p class="price">Rs. 22,200.00</p>
+            <!-- <p class="description" style="display: none;">Grab the best quality fabrics with free size.</p> -->
+            <div class="icons">
+                <svg  class="add-cart" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z"/></svg>
+
+                <svg class="view-details" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"/></svg>
+       
+
+            </div>
+        </div>
+        <div class="product body-care product-box" data-name="p-2" >
+            <img src="./image/3.jpg" alt="Bluebell Dream Nourishing Cream">
+            <h3 class="product-title">Bluebell Dream Nourishing Cream</h3>
+            <p class="price">Rs. 66,400.00</p>
+            <!-- <p class="description" style="display: none;">Lorem ipsum dolor sit amet consectetur..</p> -->
+
+            <div class="icons">
+                <svg  class="add-cart" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z"/></svg>
+
+                <svg class="view-details" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"/></svg>
+
+            </div>
+        </div>
+        <div class="product body-care product-box" data-name="p-3">
+            <img src="./image/20.jpg" alt="Apricot Melon Softening Cream">
+            <h3 class="product-title">Apricot Melon Softening Cream</h3>
+            <p class="price">Rs. 74,500.00</p>
+            <!-- <p class="description" style="display: none;">Lorem ipsum dolor sit amet consectetur..</p> -->
+
+            <div class="icons">
+                <svg  class="add-cart" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z"/></svg>
+
+                <svg class="view-details" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"/></svg>
+
+            </div>
+        </div>
+        <div class="product body-care product-box" data-name="p-4">
+            <img src="./image/24.jpg" alt="Birch Butter Silkiness Cream">
+            <h3 class="product-title">Birch Butter Silkiness Cream</h3>
+            <p class="price">Rs. 57,400.00</p>
+            <!-- <p class="description" style="display: none;">Lorem ipsum dolor sit amet consectetur..</p> -->
+            <div class="icons">
+                <svg  class="add-cart" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z"/></svg>
+
+                <svg class="view-details" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"/></svg>
+
+            </div>
+        </div>
+
+
+        <div class="product hair-care product-box" data-name="p-5">
+            <img src="./image/14.jpg" alt="Birch Butter Silkiness Cream">
+            <h3 class="product-title">Birch Butter Silkiness Cream</h3>
+            <p class="price">Rs. 57,400.00</p>
+            <!-- <p class="description" style="display: none;">Lorem ipsum dolor sit amet consectetur..</p> -->
+            <div class="icons">
+                <svg  class="add-cart" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z"/></svg>
+
+                <svg class="view-details" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"/></svg>
+
+            </div>
+        </div>
+
+
+        <div class="product skin-care product-box" data-name="p-6">
+            <img src="./image/6.jpg" alt="Birch Butter Silkiness Cream">
+            <h3 class="product-title">Birch Butter Silkiness Cream</h3>
+            <p class="price">Rs. 57,400.00</p>
+            <!-- <p class="description" style="display: none;">Lorem ipsum dolor sit amet consectetur..</p> -->
+            <div class="icons">
+                <svg  class="add-cart" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z"/></svg>
+
+                <svg class="view-details" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"/></svg>
+
+            </div>
+        </div>
+
+        <div class="product skin-care product-box" data-name="p-7">
+            <img src="./image/P1.jpg" alt="Birch Butter Silkiness Cream">
+            <h3 class="product-title">Birch Butter Silkiness Cream</h3>
+            <p class="price">Rs. 57,400.00</p>
+            <!-- <p class="description" style="display: none;">Lorem ipsum dolor sit amet consectetur..</p> -->
+            <div class="icons">
+                <svg   class="add-cart" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z"/></svg>
+
+                <svg class="view-details" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"/></svg>
+
+            </div>
+        </div>
+
+
+
+        <div class="product skin-care product-box" data-name="p-8">
+            <img src="./image/P10.jpg" alt="Birch Butter Silkiness Cream">
+            <h3 class="product-title">Birch Butter Silkiness Cream</h3>
+            <p class="price">Rs. 57,400.00</p>
+            <!-- <p class="description" style="display: none;">Lorem ipsum dolor sit amet consectetur..</p> -->
+            <div class="icons">
+                <svg  class="add-cart" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z"/></svg>
+
+                <svg class="view-details" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"/></svg>
+
+            </div>
+        </div>
+
+
+        
+        <div class="product skin-care product-box" data-name="p-9">
+            <img src="./image/P12.jpg" alt="Birch Butter Silkiness Cream">
+            <h3 class="product-title">Birch Butter Silkiness Cream</h3>
+            <p class="price">Rs. 57,400.00</p>
+            <!-- <p class="description" style="display: none;">Lorem ipsum dolor sit amet consectetur..</p> -->
+            <div class="icons">
+                <svg  class="add-cart" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z"/></svg>
+
+                <svg class="view-details" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"/></svg>
+
+            </div>
+        </div>
+
+
+        
+        <div class="product hair-care product-box" data-name="p-10">
+            <img src="./image/P11.jpg" alt="Birch Butter Silkiness Cream">
+            <h3 class="product-title">Birch Butter Silkiness Cream</h3>
+            <p class="price">Rs. 57,400.00</p>
+            <!-- <p class="description" style="display: none;">Lorem ipsum dolor sit amet consectetur..</p> -->
+            <div class="icons">
+                <svg   class="add-cart" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z"/></svg>
+
+                <svg class="view-details" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"/></svg>
+
+            </div>
+        </div>
+
+
+
+        <div class="product hair-care product-box" data-name="p-11">
+            <img src="./image/P13.jpg" alt="Birch Butter Silkiness Cream">
+            <h3 class="product-title">Birch Butter Silkiness Cream</h3>
+            <p class="price">Rs. 57,400.00</p>
+            <!-- <p class="description" style="display: none;">Lorem ipsum dolor sit amet consectetur..</p> -->
+            <div class="icons">
+                <svg   class="add-cart" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z"/></svg>
+
+                <svg class="view-details" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"/></svg>
+
+            </div>
+        </div>
+
+
+        <div class="product hair-care product-box" data-name="p-12">
+            <img src="./image/P14.jpg" alt="Birch Butter Silkiness Cream">
+            <h3 class="product-title">Birch Butter Silkiness Cream</h3>
+            <p class="price">Rs. 57,400.00</p>
+            <!-- <p class="description" style="display: none;">Lorem ipsum dolor sit amet consectetur..</p> -->
+            <div class="icons">
+                <svg class="add-cart" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z"/></svg>
+
+                <svg class="view-details" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"/></svg>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- detailes -->
+<div id="product-details-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="product-details">
+         <img id="modal-image" src="" alt="Product Image">
+            <div class="details">
+                <h2 id="modal-title"  class="cart-product-title product-title"></h2>
+                <span id="modal-price" class="price"></span>
+                <p id="modal-description"></p>
+                <div class="product-extra-info">
+                    <p><span>Skin Type:</span> Dark</p>
+                    <p><span>Unit Count:</span> 150.0 millilitre</p>
+                </div>
+                
+                <div class="quantity-controls">
+                    <button class="minus-btn">-</button>
+                    <input type="text" value="1" class="quantity-input">
+                    <button class="plus-btn">+</button>
+                </div>
+
+                <button class="add-to-cart-btn add-cart">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- button top up -->
+<button id="scrollToTopBtn" class="scroll-top">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+
+<!-- Testimonial start --><section class="testimonial-section">
+    <div class="container">
+        <h2 class="section-title">Testimonial</h2>
+        <div class="testimonial-slider">
+            <div class="testimonial-item active">
+                <div class="testimonial-content">
+                    <img src="image/client-3.png" alt="Marri Fen" class="testimonial-img">
+                    <div class="testimonial-text">
+                        <p>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint</p>
+                        <h4 class="testimonial-author">John Fen</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-item">
+                <div class="testimonial-content">
+                    <img src="image/member-3.jpg" alt="John Doe" class="testimonial-img">
+                    <div class="testimonial-text">
+                        <p>
+                            "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                        </p>
+                        <h4 class="testimonial-author">John Doe</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-item">
+                <div class="testimonial-content">
+                    <img src="image/client-4.png" alt="Jone Smith" class="testimonial-img">
+                    <div class="testimonial-text">
+                        <p>
+                            "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                        </p>
+                        <h4 class="testimonial-author">Jane Smith</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slider-controls">
+            <button class="prev-btn">&#10094;</button>
+            <button class="next-btn">&#10095;</button>
+        </div>
+    </div>
+  </section>
+   <!-- Testimonial end -->
+
+   <!-- Start Footer -->
+   <footer class="custom-footer">
+    <div class="footer-container">
+        <div class="footer-logo">
+            <img src="image/Fabish_Logo_Final_a68866dc-7573-4072-bd3f-3e356eca427e.svg" alt="Logo">
+        </div>
+        <div class="footer-sections">
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>12 str<br> Egypt</p>
+                <p>0101649583</p>
+            </div>
+            <div class="footer-section">
+                <h3>Useful Links</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Affiliate Program</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 Fabish by Alaa-Abdullh</p>
+    </div>
+    <button class="scroll-top"><i class="fas fa-arrow-up"></i></button>
+</footer>
+
+<!-- End Footer -->
+     <script src="script.js"></script>
+</body>
+</html>
