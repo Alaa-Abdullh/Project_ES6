@@ -1,348 +1,376 @@
-//........................ preloader.................................. 
-window.addEventListener("load", function () {
-    setTimeout(function () {
-        const preloader = document.querySelector(".preloader");
-        preloader.style.display = "none";
-
-        const content = document.querySelector(".content");
-        content.style.display = "block";
-    }, 3000); 
+// ==================== Preloader ====================
+window.addEventListener("load", function() {
+    setTimeout(function() {
+        document.querySelector(".preloader").style.display = "none";
+        document.querySelector(".content").style.display = "block";
+    }, 3000);
 });
 
-// .................button login/logout...............................
+// ==================== Login/Logout System ====================
 document.addEventListener("DOMContentLoaded", function() {
-    let user = localStorage.getItem("loggedInUser");
-
-    // login
+    const user = localStorage.getItem("loggedInUser");
+    const userInfo = document.getElementById("user-info");
+    const loginLink = document.getElementById("login");
+    
     if (user) {
-        document.getElementById("user-info").style.display = "block";
+        userInfo.style.display = "flex";
         document.getElementById("username").textContent = user;
-        document.getElementById("login").style.display = "none";
+        loginLink.style.display = "none";
     }
     
-    // Logout 
     document.getElementById("logout-btn").addEventListener("click", function() {
-        localStorage.removeItem("loggedInUser"); 
-        window.location.reload(); 
+        localStorage.removeItem("loggedInUser");
+        window.location.reload();
     });
 });
 
-
-//.............................. slider ....................................
-document.addEventListener("DOMContentLoaded", function () {
-    const slides = document.querySelectorAll(".slide");
-    const sliderContainer = document.querySelector(".slider-container");
-    const prevButton = document.querySelector(".prev");
-    const nextButton = document.querySelector(".next");
-    
-    let currentIndex = 0;
-    const totalSlides = slides.length;
-    let slideInterval;
-
-    function updateSlider() {
-        sliderContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-    }
-
-    function showNextSlide() {
-        currentIndex = (currentIndex + 1) % totalSlides;
-        updateSlider();
-    }
-
-    function showPrevSlide() {
-        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-        updateSlider();
-    }
-
-    function startAutoSlide() {
-        slideInterval = setInterval(showNextSlide, 4000);
-    }
-
-    function stopAutoSlide() {
-        clearInterval(slideInterval);
-    }
-
-    startAutoSlide();
-
-    nextButton.addEventListener("click", () => {
-        showNextSlide();
-        stopAutoSlide();
-        startAutoSlide();
-    });
-
-    prevButton.addEventListener("click", () => {
-        showPrevSlide();
-        stopAutoSlide();
-        startAutoSlide();
-    });
-
-    sliderContainer.addEventListener("mouseenter", stopAutoSlide);
-    sliderContainer.addEventListener("mouseleave", startAutoSlide);
-});
-
-
-// .............................Add To Cart..................... ....
-const cartIcon = document.querySelector("#cart-icon");
-const cart = document.querySelector(".cart");
-const cartclose = document.querySelector("#cart-close");
-
-cartIcon.addEventListener("click", () => cart.classList.add("active"));
-cartclose.addEventListener("click", () => cart.classList.remove("active"));
-
-const addcartbutton = document.querySelectorAll(".add-cart");
-addcartbutton.forEach(button => {
-    button.addEventListener("click", event => {
-        const productbox = event.target.closest(".product-box");
-        if (!productbox) return;
-        addTocart(productbox);
-    });
-});
-
-
-const cartcontent = document.querySelector(".cart-content");
-
-const addTocart = productbox => {
-    const productImage = productbox.querySelector("img").src;
-    const productTitle = productbox.querySelector(".product-title").textContent;
-    const productPrice = productbox.querySelector(".price").textContent;
-
-const cartItems = document.querySelectorAll(".cart-product-title");
-for (const item of cartItems) {
-    if(item.textContent === productTitle){
-        alert("this item is already in the cart");
-        return;
-    }
-    
-}
-
-
-    const cartbox = document.createElement("div");
-    cartbox.classList.add("cart-box");
-    cartbox.innerHTML = `
-        <img src="${productImage}" class="cart-img">
-        <div class="cart-detail">
-            <h2 class="cart-product-title">${productTitle}</h2>
-            <span class="cart-price">${productPrice}</span>
-            <div class="cart-quantity">
-                <button id="decrement">-</button>
-                <span class="number">1</span>
-                <button id="increment">+</button>
-            </div>
-        </div>
-        <svg  class="cart-remove" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#434343">
-            <path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/>
-        </svg>`;
-
-    cartcontent.appendChild(cartbox);
-    cartbox.querySelector(".cart-remove").addEventListener("click",()=>{
-        cartbox.remove();
-    updateCount(-1);
-
-        ubdateTotalPrice();
-    });
-    cartbox.querySelector(".cart-quantity").addEventListener("click",event=>{
-        const numberElement=cartbox.querySelector(".number");
-        const decrementButton=cartbox.querySelector("#decrement");
-        let quantity=numberElement.textContent;
-        if (event.target.id === "decrement" && quantity>1) {
-            quantity --;
-            if (quantity === 1) {
-                decrementButton.style.color="#999"; 
-            }
-        } else if(event.target.id ==="increment")
-             {
-            quantity ++;
-            decrementButton.style.color="#333"; 
-
+// ==================== Slider ====================
+document.addEventListener("DOMContentLoaded", function() {
+    const slider = {
+        slides: document.querySelectorAll(".slide"),
+        container: document.querySelector(".slider-container"),
+        prevBtn: document.querySelector(".prev"),
+        nextBtn: document.querySelector(".next"),
+        currentIndex: 0,
+        interval: null,
+        
+        init: function() {
+            this.updateSlider();
+            this.startAutoSlide();
+            this.setupEventListeners();
+        },
+        
+        updateSlider: function() {
+            this.container.style.transform = `translateX(-${this.currentIndex * 100}%)`;
+        },
+        
+        nextSlide: function() {
+            this.currentIndex = (this.currentIndex + 1) % this.slides.length;
+            this.updateSlider();
+        },
+        
+        prevSlide: function() {
+            this.currentIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
+            this.updateSlider();
+        },
+        
+        startAutoSlide: function() {
+            this.interval = setInterval(() => this.nextSlide(), 4000);
+        },
+        
+        stopAutoSlide: function() {
+            clearInterval(this.interval);
+        },
+        
+        setupEventListeners: function() {
+            this.nextBtn.addEventListener("click", () => {
+                this.nextSlide();
+                this.restartAutoSlide();
+            });
+            
+            this.prevBtn.addEventListener("click", () => {
+                this.prevSlide();
+                this.restartAutoSlide();
+            });
+            
+            this.container.addEventListener("mouseenter", () => this.stopAutoSlide());
+            this.container.addEventListener("mouseleave", () => this.startAutoSlide());
+        },
+        
+        restartAutoSlide: function() {
+            this.stopAutoSlide();
+            this.startAutoSlide();
         }
-        numberElement.textContent=quantity;
-        ubdateTotalPrice();
-
-    });
-    updateCount(1);
-    ubdateTotalPrice();
-};
-
-const ubdateTotalPrice=()=>{
-const totalpriceElement=document.querySelector(".total-price");
-const cartboxs=cartcontent.querySelectorAll(".cart-box");
-let total=0;
-cartboxs.forEach(cartbox =>{
-    const priceElement=cartbox.querySelector(".cart-price");
-    const quantityElement=cartbox.querySelector(".number");
-    const price = parseFloat(priceElement.textContent.replace("Rs.", "").replace(/,/g, "").trim());
-    let quantity=parseInt(quantityElement.textContent);
-    total+=price *quantity;
-});
-totalpriceElement.textContent=`${total}`;
-};
-
-let cartItemCount=0;
-const updateCount=change=>{
-    const countbage=document.querySelector(".cart-count");
-    cartItemCount+=change;
-    if (cartItemCount>0) {
-        countbage.style.visibility="visible";
-        countbage.textContent=cartItemCount;
-        
-    } else {
-        countbage.style.visibility="hidden";
-        countbage.textContent="";
-    }
-}
-
-// massage buy now
-const buynowbutton=document.querySelector(".btn-buy");
-buynowbutton.addEventListener("click",()=>{
-    const cartboxs=cartcontent.querySelectorAll(".cart-box");
-    if (cartboxs.length===0) {
-        alert("your cart empty ,please add item before buying");
-        return;
-        
-    }
-    cartboxs.forEach(cartbox => cartbox.remove());
-    cartItemCount=0;
-    updateCount(0);
-    ubdateTotalPrice();
-    window.location.href = "Thank.html"; 
-    alert("Thank You for buying");
-})
-
-
-
-// ..........................prouduct................................... 
-document.querySelectorAll(".categories li").forEach(item => {
-    item.addEventListener("click", function () {
-        document.querySelectorAll(".categories li").forEach(li => li.classList.remove("active"));
-        this.classList.add("active");
-    });
+    };
+    
+    slider.init();
 });
 
-
-document.querySelectorAll(".categories li").forEach(item => {
-    item.addEventListener("click", function () {
-        document.querySelectorAll(".categories li").forEach(li => li.classList.remove("active"));
-        this.classList.add("active");
-        let filter = this.getAttribute("data-filter");
-        document.querySelectorAll(".product").forEach(product => {
-            if (filter === "all") {
-                product.classList.add("show");
-            } else {
-                if (product.classList.contains(filter)) {
-                    product.classList.add("show");
-                } else {
-                    product.classList.remove("show");
+// ==================== Cart System ====================
+document.addEventListener("DOMContentLoaded", function() {
+    const cart = {
+        icon: document.querySelector("#cart-icon"),
+        cartElement: document.querySelector(".cart"),
+        closeBtn: document.querySelector("#cart-close"),
+        content: document.querySelector(".cart-content"),
+        buyBtn: document.querySelector(".btn-buy"),
+        itemCount: 0,
+        
+        init: function() {
+            this.setupEventListeners();
+        },
+        
+        setupEventListeners: function() {
+            this.icon.addEventListener("click", () => this.toggleCart());
+            this.closeBtn.addEventListener("click", () => this.closeCart());
+            this.buyBtn.addEventListener("click", () => this.handleBuy());
+            
+            document.querySelectorAll(".add-cart").forEach(button => {
+                button.addEventListener("click", (e) => {
+                    const product = e.target.closest(".product-box") || e.target.closest(".product");
+                    if (product) this.addToCart(product);
+                });
+            });
+        },
+        
+        toggleCart: function() {
+            this.cartElement.classList.toggle("active");
+        },
+        
+        openCart: function() {
+            this.cartElement.classList.add("active");
+        },
+        
+        closeCart: function() {
+            this.cartElement.classList.remove("active");
+        },
+        
+        addToCart: function(product) {
+            const title = product.querySelector(".product-title").textContent;
+            
+            if (this.isItemInCart(title)) {
+                alert("This item is already in the cart");
+                return;
+            }
+            
+            const cartItem = this.createCartItem(product);
+            this.content.appendChild(cartItem);
+            this.setupCartItemEvents(cartItem);
+            this.updateCount(1);
+            this.updateTotalPrice();
+        },
+        
+        isItemInCart: function(title) {
+            return Array.from(document.querySelectorAll(".cart-product-title"))
+                .some(item => item.textContent === title);
+        },
+        
+        createCartItem: function(product) {
+            const image = product.querySelector("img").src;
+            const title = product.querySelector(".product-title").textContent;
+            const price = product.querySelector(".price").textContent;
+            
+            const cartBox = document.createElement("div");
+            cartBox.classList.add("cart-box");
+            cartBox.innerHTML = `
+                <img src="${image}" class="cart-img">
+                <div class="cart-detail">
+                    <h2 class="cart-product-title">${title}</h2>
+                    <span class="cart-price">${price}</span>
+                    <div class="cart-quantity">
+                        <button class="decrement">-</button>
+                        <span class="number">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                </div>
+                <svg class="cart-remove" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#434343">
+                    <path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/>
+                </svg>`;
+            
+            return cartBox;
+        },
+        
+        setupCartItemEvents: function(cartItem) {
+            cartItem.querySelector(".cart-remove").addEventListener("click", () => {
+                cartItem.remove();
+                this.updateCount(-1);
+                this.updateTotalPrice();
+            });
+            
+            cartItem.querySelector(".cart-quantity").addEventListener("click", e => {
+                const numberElement = cartItem.querySelector(".number");
+                const decrementButton = cartItem.querySelector(".decrement");
+                let quantity = parseInt(numberElement.textContent);
+                
+                if (e.target.classList.contains("decrement") && quantity > 1) {
+                    quantity--;
+                    if (quantity === 1) decrementButton.style.color = "#999";
+                } else if (e.target.classList.contains("increment")) {
+                    quantity++;
+                    decrementButton.style.color = "#333";
                 }
+                
+                numberElement.textContent = quantity;
+                this.updateTotalPrice();
+            });
+        },
+        
+        updateCount: function(change) {
+            const countBadge = document.querySelector(".cart-count");
+            this.itemCount += change;
+            
+            if (this.itemCount > 0) {
+                countBadge.style.visibility = "visible";
+                countBadge.textContent = this.itemCount;
+            } else {
+                countBadge.style.visibility = "hidden";
+                countBadge.textContent = "";
             }
-        });
-    });
-});
-
-
-document.querySelectorAll(".product").forEach(product => product.classList.add("show"));
-
-
-
-
-//.............................. detailes cart...........................................
-document.addEventListener('DOMContentLoaded', function() {
-    const modal = document.getElementById('product-details-modal');
-    const modalImage = document.getElementById('modal-image');
-    const modalTitle = document.getElementById('modal-title');
-    const modalPrice = document.getElementById('modal-price');
-    const modalDescription = document.getElementById('modal-description');
-    const closeBtn = document.querySelector('.close');
-
-    document.querySelectorAll('.product .view-details').forEach(icon => {
-        icon.addEventListener('click', function() {
-            const product = this.closest('.product');
-            const productImage = product.querySelector('img').src;
-            const productTitle = product.querySelector('h3').textContent;
-            const productPrice = product.querySelector('p').textContent;
-
-            modalImage.src = productImage;
-            modalTitle.textContent = productTitle;
-            modalPrice.textContent = productPrice;
-            modal.style.display = 'flex';
-        });
-    });
-
-    closeBtn.addEventListener('click', function() {
-        modal.style.display = 'none';
-    });
-
-    window.addEventListener('click', function(event) {
-        if (event.target === modal) {
-            modal.style.display = 'none';
-        }
-    });
-});
-
-// ...............................button  in detailes =/-............................
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.plus-btn').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-            const input = this.previousElementSibling;
-            let currentValue = parseInt(input.value) || 0;
-            input.value = currentValue + 1;
-        });
-    });
-
-    document.querySelectorAll('.minus-btn').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-            const input = this.nextElementSibling;
-            let currentValue = parseInt(input.value) || 0;
-            if(currentValue > 1) {
-                input.value = currentValue - 1;
+        },
+        
+        updateTotalPrice: function() {
+            const totalPriceElement = document.querySelector(".total-price");
+            let total = 0;
+            
+            document.querySelectorAll(".cart-box").forEach(box => {
+                const priceText = box.querySelector(".cart-price").textContent;
+                const quantity = parseInt(box.querySelector(".number").textContent);
+                const price = parseFloat(priceText.replace("Rs.", "").replace(/,/g, "").trim());
+                total += price * quantity;
+            });
+            
+            totalPriceElement.textContent = `Rs. ${total.toLocaleString()}`;
+        },
+        
+        handleBuy: function() {
+            if (this.itemCount === 0) {
+                alert("Your cart is empty, please add items before buying");
+                return;
             }
+            
+            this.content.innerHTML = "";
+            this.itemCount = 0;
+            this.updateCount(0);
+            this.updateTotalPrice();
+            window.location.href = "Thank.html";
+        }
+    };
+    
+    cart.init();
+});
+
+// ==================== Product Filtering ====================
+document.addEventListener("DOMContentLoaded", function() {
+    const filterItems = document.querySelectorAll(".categories li");
+    const products = document.querySelectorAll(".product");
+    
+    filterItems.forEach(item => {
+        item.addEventListener("click", function() {
+            // Update active state
+            filterItems.forEach(li => li.classList.remove("active"));
+            this.classList.add("active");
+            
+            // Filter products
+            const filter = this.dataset.filter;
+            products.forEach(product => {
+                if (filter === "all" || product.classList.contains(filter)) {
+                    product.style.display = "block";
+                } else {
+                    product.style.display = "none";
+                }
+            });
         });
     });
 });
 
- //......................... top  button................................
-document.addEventListener("DOMContentLoaded", function () {
-    let scrollToTopBtn = document.getElementById("scrollToTopBtn");
-
-    window.addEventListener("scroll", function () {
-        if (window.scrollY > 300) {
-            scrollToTopBtn.classList.add("show");
-        } else {
-            scrollToTopBtn.classList.remove("show");
+// ==================== Product Details Modal ====================
+document.addEventListener("DOMContentLoaded", function() {
+    const modal = {
+        element: document.getElementById("product-details-modal"),
+        image: document.getElementById("modal-image"),
+        title: document.getElementById("modal-title"),
+        price: document.getElementById("modal-price"),
+        description: document.getElementById("modal-description"),
+        closeBtn: document.querySelector(".close"),
+        
+        init: function() {
+            this.setupEventListeners();
+            this.setupQuantityButtons();
+        },
+        
+        setupEventListeners: function() {
+            document.querySelectorAll(".product .view-details").forEach(icon => {
+                icon.addEventListener("click", (e) => {
+                    const product = e.target.closest(".product");
+                    this.openModal(product);
+                });
+            });
+            
+            this.closeBtn.addEventListener("click", () => this.closeModal());
+            window.addEventListener("click", (e) => {
+                if (e.target === this.element) this.closeModal();
+            });
+        },
+        
+        openModal: function(product) {
+            this.image.src = product.querySelector("img").src;
+            this.title.textContent = product.querySelector(".product-title").textContent;
+            this.price.textContent = product.querySelector(".price").textContent;
+            this.element.style.display = "flex";
+        },
+        
+        closeModal: function() {
+            this.element.style.display = "none";
+        },
+        
+        setupQuantityButtons: function() {
+            document.querySelectorAll(".plus-btn").forEach(btn => {
+                btn.addEventListener("click", function() {
+                    const input = this.previousElementSibling;
+                    input.value = (parseInt(input.value) || 0) + 1;
+                });
+            });
+            
+            document.querySelectorAll(".minus-btn").forEach(btn => {
+                btn.addEventListener("click", function() {
+                    const input = this.nextElementSibling;
+                    const value = parseInt(input.value) || 0;
+                    if (value > 1) input.value = value - 1;
+                });
+            });
         }
-    });
+    };
+    
+    modal.init();
+});
 
-    scrollToTopBtn.addEventListener("click", function () {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
+// ==================== Scroll to Top Button ====================
+document.addEventListener("DOMContentLoaded", function() {
+    const scrollBtn = document.getElementById("scrollToTopBtn");
+    
+    window.addEventListener("scroll", function() {
+        scrollBtn.classList.toggle("show", window.scrollY > 300);
+    });
+    
+    scrollBtn.addEventListener("click", function() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
     });
 });
 
-// ....................termination.................
-// slider image 
-const testimonialItems = document.querySelectorAll('.testimonial-item');
-const prevBtn = document.querySelector('.prev-btn');
-const nextBtn = document.querySelector('.next-btn');
-let currentIndex = 0;
-
-function showTestimonial(index) {
-    testimonialItems.forEach((item, i) => {
-        item.classList.remove('active');
-        if (i === index) {
-            item.classList.add('active');
+// ==================== Testimonials Slider ====================
+document.addEventListener("DOMContentLoaded", function() {
+    const testimonials = {
+        items: document.querySelectorAll(".testimonial-item"),
+        prevBtn: document.querySelector(".prev-btn"),
+        nextBtn: document.querySelector(".next-btn"),
+        currentIndex: 0,
+        
+        init: function() {
+            this.showTestimonial(this.currentIndex);
+            this.setupEventListeners();
+        },
+        
+        showTestimonial: function(index) {
+            this.items.forEach((item, i) => {
+                item.classList.toggle("active", i === index);
+            });
+        },
+        
+        next: function() {
+            this.currentIndex = (this.currentIndex + 1) % this.items.length;
+            this.showTestimonial(this.currentIndex);
+        },
+        
+        prev: function() {
+            this.currentIndex = (this.currentIndex - 1 + this.items.length) % this.items.length;
+            this.showTestimonial(this.currentIndex);
+        },
+        
+        setupEventListeners: function() {
+            this.prevBtn.addEventListener("click", () => this.prev());
+            this.nextBtn.addEventListener("click", () => this.next());
         }
-    });
-}
-
-prevBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex > 0) ? currentIndex - 1 : testimonialItems.length - 1;
-    showTestimonial(currentIndex);
+    };
+    
+    testimonials.init();
 });
-
-nextBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex < testimonialItems.length - 1) ? currentIndex + 1 : 0;
-    showTestimonial(currentIndex);
-});
-
-
-showTestimonial(currentIndex);
