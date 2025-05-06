@@ -507,8 +507,8 @@ h1 {
     opacity: 1;
 }
 .icons svg{
-    width: 40px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     padding: 8px;
     background: rgba(0,0,0,0.7);
     border-radius: 50%;
@@ -620,29 +620,38 @@ h1 {
     }
     
     .products {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        /* grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); */
         gap: 10px;
     }
-    
+    .product-box {
+        position: relative; 
+        margin: 0 auto; 
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+    }
     .product-box img {
         height: 150px;
+        position: relative;
     }
     
-    .product-title {
-        font-size: 0.9rem;
-        height: 36px;
+    .product-title , .price {
+        /* font-size: 0.9rem;
+        height: 36px; */
+        text-align: center;
     }
-    
-    .price {
-        font-size: 0.9rem;
+    .product-title{
+        margin: 5px 0;
     }
     
     .icons {
         opacity: 1; 
-        flex-direction: row;
-        top: auto;
+        /* flex-direction: row; */
+        /* top: auto; */
         bottom: 10px;
         right: 10px;
+
+        
     }
     
     .modal-content {
@@ -1190,7 +1199,7 @@ h1 {
     color: var(--text-color);
 }
 
-/* للاستجابة على الشاشات الصغيرة */
+/* footer res */
 @media (max-width: 768px) {
     .footer-sections {
         grid-template-columns: 1fr;
@@ -1204,3 +1213,4 @@ h1 {
         justify-content: center;
     }
 }
+

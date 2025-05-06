@@ -6,6 +6,15 @@ window.addEventListener("load", function() {
     }, 3000);
 });
 
+// ==================menu====================
+document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.querySelector('.link');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+});
 // ==================== Login/Logout System ====================
 document.addEventListener("DOMContentLoaded", function() {
     const user = localStorage.getItem("loggedInUser");
